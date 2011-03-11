@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+  <head>
+    <title>JS1k, 1k demo submission [id]</title>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <canvas id="c"></canvas>
+    <script>
+c=document.body.children[0];
+c.innerHTML='<style>*{margin:0;width:100%;height:100%;overflow:hidden}</style>';
+c.width=w=innerWidth/3;
+W=w/16;
+c.height=h=innerHeight/3;
+H=h/9;
+O=-3;
+d=c.getContext('2d');
+g=d.createLinearGradient(0,0,w,0);
+g.addColorStop(0,'#4a4d7f');
+g.addColorStop(1,'#1e1a41');
+setInterval(function(){
+s=+(new Date);
+T=5e3;
+t=Math.tan(s%T/T*Math.PI);
+d.fillStyle=g;
+d.fillRect(0,0,w,h);
+d.lineWidth=3;
+d.shadowBlur=9;
+Z=d.beginPath;
+for(i=0;i<16;i++){
+
+d.beginPath();
+d.strokeStyle=d.shadowColor='#ebb3f2';
+d.moveTo(i*W-t*W,h);
+d.lineTo((i+1)*(2*t)*W,O);
+d.stroke();
+
+d.beginPath();
+d.strokeStyle=d.shadowColor='#d7f3fa';
+d.moveTo(O,i*H-t*H);
+d.lineTo(w,(i+1)*(2*t)*H,O);
+d.stroke();
+
+}
+
+for(i=0;i<4;i++){
+L=['MOTHER-','FUCKING','ANIMATED','LASERS'][i];
+d.fillStyle=i==2&&s%1e3<5e2?'#4df':'#fff';
+d.font='bold 20px sans-serif';
+d.fillText(L,10,h/2+20*(i-1));
+}
+}, 9);
+    </script>
+  </body> 
+</html>
